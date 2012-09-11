@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /changelog/
+Disallow: /browse/
+Disallow: /fe/
+Disallow: /search/
+Disallow: /drupal/
+Disallow: /login/
+Disallow: /login
+

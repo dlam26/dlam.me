@@ -1,0 +1,28 @@
+body {
+   margin:30px;
+   margin-top:10px;
+}
+
+* {
+  font-family:sans-serif;
+}
+
+div#stuff {
+    float:left;
+}
+
+div.rightside {
+    float:left;
+    padding-left:100px;
+    padding-top:40px;
+}
+
+div.rightside a {
+    cursor:pointer;
+    font-size:10pt;
+}
+
+pre.cowsay {
+    font-family:monospace;
+}
+
