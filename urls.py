@@ -34,5 +34,11 @@ urlpatterns = patterns('',
 
     # from https://docs.djangoproject.com/en/1.2/howto/static-files/
     (r'^stuff/(?P<path>.*)$', 'django.views.static.serve',
-            {'document_root': '/home/dlam/hg/dlam_me/stuff'})
+            {'document_root': '/home/dlam/hg/dlam_me/stuff'}),
+
+    # TODO serve it from nginx!
+    url(r'^blog/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': 'blog/build/html',
+        'show_indexes': True
+    }),
 )

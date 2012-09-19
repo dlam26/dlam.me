@@ -4,7 +4,7 @@ import socket
 
 ON_RACKSPACE = socket.gethostname() == 'davidfedoraserver'
 
-DEBUG = True if ON_RACKSPACE else False
+DEBUG = False if ON_RACKSPACE else True
 TEMPLATE_DEBUG = DEBUG
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
