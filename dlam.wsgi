@@ -1,7 +1,9 @@
 import os 
 import sys
 
-sys.path.append('/home/dlam/hg/dlam_me')
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+
+sys.path.append(PROJECT_ROOT)
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
