@@ -8,8 +8,14 @@ from django.views.generic.simple import direct_to_template
 from django.contrib import admin
 admin.autodiscover()
 
-css_folder = os.path.join(os.path.dirname(__file__), 'css')
-js_folder  = os.path.join(os.path.dirname(__file__), 'js')
+ROOT = os.path.dirname(__file__)
+
+css_folder = os.path.join(ROOT, 'css')
+js_folder  = os.path.join(ROOT, 'js')
+
+def build_full_path(folder):
+    """Because django.views.static.serve expects a absolute/full path!"""
+    return os.path.join(ROOT, folder)
 
 urlpatterns = patterns('',
     # Examples:
@@ -29,16 +35,16 @@ urlpatterns = patterns('',
         {'template': 'robots.txt', 'mimetype': 'text/plain'}),
 
     # pg.52 in Learning Website Development with Django 
-    (r'^css/(?P<path>.*)$', 'django.views.static.serve', { 'document_root': css_folder }),
-    (r'^js/(?P<path>.*)$', 'django.views.static.serve', { 'document_root': js_folder }),
+    (r'^css/(?P<path>.*)$', 'django.views.static.serve', { 'document_root': build_full_path('css') }),
+    (r'^js/(?P<path>.*)$', 'django.views.static.serve', { 'document_root': build_full_path('js') }),
 
     # from https://docs.djangoproject.com/en/1.2/howto/static-files/
     (r'^stuff/(?P<path>.*)$', 'django.views.static.serve',
-            {'document_root': '/home/dlam/hg/dlam_me/stuff'}),
+            {'document_root': build_full_path('stuff') }),
 
     # TODO serve it from nginx!
     url(r'^blog/(?P<path>.*)$', 'django.views.static.serve', {
-        'document_root': 'blog/build/html',
+        'document_root': build_full_path('blog/build/html'),
         'show_indexes': True
     }),
 )
