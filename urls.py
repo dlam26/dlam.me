@@ -34,9 +34,10 @@ urlpatterns = patterns('',
     (r'^robots\.txt$', direct_to_template,
         {'template': 'robots.txt', 'mimetype': 'text/plain'}),
 
-    # pg.52 in Learning Website Development with Django 
+    # pg.52 in Learning Website Development with Django
     (r'^css/(?P<path>.*)$', 'django.views.static.serve', { 'document_root': build_full_path('css') }),
     (r'^js/(?P<path>.*)$', 'django.views.static.serve', { 'document_root': build_full_path('js') }),
+    (r'^img/(?P<path>.*)$', 'django.views.static.serve', { 'document_root': build_full_path('img') }),
 
     # from https://docs.djangoproject.com/en/1.2/howto/static-files/
     (r'^stuff/(?P<path>.*)$', 'django.views.static.serve',
