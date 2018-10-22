@@ -2,13 +2,14 @@
 import os
 import socket
 
-ON_RACKSPACE = socket.gethostname() == 'davidfedoraserver'
 
-DEBUG = False if ON_RACKSPACE else True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 PROJECT_MODULE_NAME = 'homepage'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ADMINS = (
     ('David Lam', 'd@dlam.me'),

@@ -66,7 +66,7 @@ def index(request):
     cowfile = cowsay[0]
     stdout  = cowsay[1]
 
-    t = loader.get_template('layout.html') 
+    t = loader.get_template('layout.html')
     c = Context({
         'sekrit':SEKRIT,
         'cowfile': cowfile,
@@ -80,7 +80,7 @@ def __get_cowsay():
     wrapcolumn = '50'
     cowfile = cowfiles[random.randint(0, len(cowfiles))-1]
 
-    cowsaycmd  = ['cowsay', '-W', wrapcolumn]
+    cowsaycmd  = ['/usr/games/cowsay', '-W', wrapcolumn]
     cowsaycmd.extend(['-f', cowfile])
 
     # stick out a tongue 50% of the time
@@ -88,11 +88,11 @@ def __get_cowsay():
     #   cowsaycmd.extend(['-T', 'U'])
 
     # see http://docs.python.org/library/subprocess.html#replacing-shell-pipeline
-    fortunecmd = ['fortune']
+    fortunecmd = ['/usr/games/fortune']
     p1 = Popen(fortunecmd, stdout = PIPE)
     p2 = Popen(cowsaycmd, stdin=p1.stdout, stdout=PIPE)
 
-    (stdout, stdin) = p2.communicate() 
+    (stdout, stdin) = p2.communicate()
 
     return (cowfile, stdout)
 
