@@ -2,3 +2,10 @@
 *.pyc
 *.sw*
 *.un*
+
+app.js
+node_modules
+tmp
+
+expressjs/views/homepage/build
+expressjs/views/homepage/public
